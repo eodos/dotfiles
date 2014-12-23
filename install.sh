@@ -25,7 +25,7 @@ fi
 if [ -f ~/.vimrc ]
 then
   mv ~/.vimrc ~/backup-files/.vimrc
-  echo "Current .vimrc folder saved in ~/backup-files/"
+  echo "Current .vimrc file saved in ~/backup-files/"
 fi
 
 # Replace bashrc file
