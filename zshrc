@@ -70,7 +70,17 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Personal aliases
+# Aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias update="yaourt -Syua"
+
+# Functions
+mkcd() {
+  mkdir $1;
+  cd $1;
+}
+
+pacman() {
+  sudo pacman $@;
+}
