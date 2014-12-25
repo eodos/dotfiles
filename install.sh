@@ -35,6 +35,11 @@ else
     mv ~/.vimrc ~/backup-files/vimrc
     echo "Current .vimrc file saved in ~/backup-files/"
   fi
+  if [ -f ~/.zshrc ]; then
+    mv ~/.zshrc ~/backup-files/zshrc
+    echo "Current .zshrc file saved in ~/backup-files/"
+  fi
+
   if [ "$answer" -eq 1 ]; then
     # Make symbolic links
     echo "Linking bashrc file..."
@@ -43,6 +48,9 @@ else
     ln -s $DIR/vim ~/.vim
     echo "Linking vimrc file..."
     ln -s $DIR/vim/vimrc ~/.vimrc
+    echo "Linking zshrc file..."
+    ln -s $DIR/zshrc ~/.zshrc
+
   elif [ "$answer" -eq 2 ]; then
     # Replace files and folders
     echo "Replacing bashrc file..."
@@ -51,5 +59,7 @@ else
     cp -R $DIR/vim ~/.vim
     echo "Replacing vimrc file..."
     cp $DIR/vim/vimrc ~/.vimrc
+    echo "Replacing zshrc file..."
+    cp $DIR/zshrc ~/.zshrc
   fi
 fi
