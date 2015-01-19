@@ -82,6 +82,11 @@ mkcd() {
   cd $1;
 }
 
+cd() {
+  builtin cd $1;
+  ls;
+}
+
 pacman() {
   sudo pacman $@;
 }
