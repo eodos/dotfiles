@@ -93,22 +93,18 @@ if &t_Co > 2 || GUI()
 endif
 " default colorscheme
 set background=dark
+"colorscheme solarized
+color codeschool
 if GUI()
   set t_Co=256
-  "colorscheme badwolf
-  colorscheme gruvbox
   let base16colorspace=256  " Access colors present in 256 colorspace
-  "colorscheme base16-monokai
-  "colorscheme base16-eighties
   " color fixes
   hi Comment ctermfg=bg ctermbg=240
   hi Comment guifg=#585858 guibg=bg
-elseif &t_Co >= 256
-  colorscheme gruvbox
+elseif &t_Co >= 254
   hi Comment ctermfg=bg ctermbg=240
   hi Comment guifg=#585858 guibg=bg
 else
-  colorscheme gruvbox
   set t_Co=8
   set t_Sf=^[[3%p1%dm
   set t_Sb=^[[4%p1%dm
