@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################
 # install.sh
-# # This script creates copies the downloaded dotfiles into your home directory
+# # This script creates copies / symbolic links of the downloaded dotfiles into the home directory
 ############################
 
 # Get script directory
@@ -12,7 +12,7 @@ let answer=0
 until [ "$answer" -eq 1 ] || [ "$answer" -eq 2 ] || [ "$answer" -eq 3 ]; do
   echo ""
   echo "What do you want to do?"
-  echo "[1] Symbolic link to the dotfiles (ln -s)"
+  echo "[1] Create symbolic link to the dotfiles (ln -s)"
   echo "[2] Copy the dotfiles into your home folder"
   echo "[3] Exit"
   read answer
