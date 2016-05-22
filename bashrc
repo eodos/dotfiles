@@ -1,5 +1,5 @@
-# Archlinux Ultimate Install - .bashrc
-# by helmuthdu
+  # Archlinux Ultimate Install - .bashrc
+  # by helmuthdu
 ## OVERALL CONDITIONALS {{{
 _islinux=false
 [[ "$(uname -s)" =~ Linux* ]] && _islinux=true
@@ -210,7 +210,7 @@ _isroot=false
           local USER=`git config --global github.user`
           local EDITOR=`git config --global core.editor`
 
-          [[ -z $NAME ]] && read -p "Nome: " NAME
+          [[ -z $NAME ]] && read -p "Name: " NAME
           [[ -z $EMAIL ]] && read -p "Email: " EMAIL
           [[ -z $USER ]] && read -p "Username: " USER
           [[ -z $EDITOR ]] && read -p "Editor: " EDITOR
@@ -292,7 +292,7 @@ _isroot=false
         d | delete)
           check_branch=`git branch | grep $2`
           if [[ -z $check_branch ]]; then
-            echo "No branch founded."
+            echo "No branch found."
           else
             git branch -D $2
             git push origin --delete $2
@@ -315,7 +315,7 @@ _isroot=false
                 git branch -d feature
                 git commit -am "${3}"
               else
-                echo "No unstable branch founded."
+                echo "No unstable branch found."
               fi
               ;;
             hotfix)
@@ -332,7 +332,7 @@ _isroot=false
                 git tag -a $3 -m "Release: v${3}"
                 git push --tags
               else
-                echo "No hotfix branch founded."
+                echo "No hotfix branch found."
               fi
               ;;
             *)
@@ -343,7 +343,7 @@ _isroot=false
                 git branch -d $2
                 git commit -am "${3}"
               else
-                echo "No unstable branch founded."
+                echo "No unstable branch found."
               fi
               ;;
           esac
@@ -625,6 +625,11 @@ _isroot=false
   #}}}
 #}}}
 # My own configuration {{{
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source /opt/ros/indigo/setup.bash
+if [ -d "$PATH:$HOME/.rvm" ]; then
+  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+fi
+
+if [ -d "/opt/ros" ]; then
+  source /opt/ros/indigo/setup.bash
+fi
 # }}}
