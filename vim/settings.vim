@@ -88,13 +88,13 @@ set showbreak=↪
 
 " Appearance Settings
 " switch syntax highlighting on, when the terminal has colors
-if &t_Co > 2 || GUI()
+if &t_Co > 2
   syntax enable
 endif
 " default colorscheme
 set background=dark
 "colorscheme solarized
-color codeschool
+colorscheme codeschool
 set t_Co=256
 let base16colorspace=256  " Access colors present in 256 colorspace
 " color fixes

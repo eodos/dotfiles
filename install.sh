@@ -22,7 +22,7 @@ else
   # Backup present files
   if [[ -f ~/.bashrc || -d ~/.vim || -f ~/.vimrc || -f ~/.zshrc ]]; then
     if [ -d ~/backup-files ]; then
-      rm -rf ~/backupfiles
+      rm -rf ~/backup-files
     fi
     mkdir -p ~/backup-files/
   fi
@@ -56,4 +56,19 @@ else
   cp $DIR/vim/vimrc ~/.vimrc
   echo "Copying zshrc file..."
   cp $DIR/zshrc ~/.zshrc
+
+  echo ""
+  echo "Do you want to install the vim plugins now?"
+  echo "[1] Yes"
+  echo "[2] No"
+  read answer
+
+  if [ "$answer" -eq 1 ]; then
+    # Install vim plugins
+    vim +PluginInstall +qall
+
+    # Compile YouCompleteMe
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --clang-completer
+  fi
 fi
