@@ -18,22 +18,18 @@
   let g:airline#extensions#hunks#enabled = 1
   let g:airline#extensions#ctrlp#show_adjacent_modes = 1
   let g:airline#extensions#whitespace#enabled = 1
-  if &t_Co > 2 || GUI()
-    let g:airline#extensions#tabline#enabled = 1
-  endif
+  let g:airline#extensions#tabline#enabled = 1
   let g:airline_theme='base16'
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
-  if GUI()
-    if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-    endif
-    if !exists('g:airline_powerline_fonts')
-      "let g:airline_left_sep = ''
-      "let g:airline_right_sep = ''
-      let g:airline_symbols.branch = ''
-      let g:airline_symbols.linenr = ''
-    endif
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  if !exists('g:airline_powerline_fonts')
+    "let g:airline_left_sep = ''
+    "let g:airline_right_sep = ''
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.linenr = ''
   endif
 
 " buffergator
@@ -56,10 +52,7 @@
         \ 'dir': '\.git$\|\.hg$\|\.svn$',
         \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
-  " On Windows use "dir" as fallback command.
-  if WINDOWS()
-    let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-  elseif executable('ag')
+  if executable('ag')
     let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
   elseif executable('ack')
     let s:ctrlp_fallback = 'ack %s --nocolor -f'
@@ -173,7 +166,7 @@
 
 " neocomplete
   let neocomplete_readme=expand('~/.vim/bundle/neocomplete/README.md')
-  if WINDOWS() || filereadable(neocomplete_readme)
+  if filereadable(neocomplete_readme)
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#enable_auto_delimiter = 1
@@ -254,11 +247,7 @@
     let g:ycm_register_as_syntastic_checker = 1
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-    if GUI()
-      let g:ycm_key_invoke_completion = '<C-Space>'
-    else
-      let g:ycm_key_invoke_completion = '<C-@>'
-    endif
+    let g:ycm_key_invoke_completion = '<C-Space>'
 
   endif
 

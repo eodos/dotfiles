@@ -95,38 +95,21 @@ endif
 set background=dark
 "colorscheme solarized
 color codeschool
-if GUI()
-  set t_Co=256
-  let base16colorspace=256  " Access colors present in 256 colorspace
-  " color fixes
-  hi Comment ctermfg=bg ctermbg=240
-  hi Comment guifg=#585858 guibg=bg
-elseif &t_Co >= 254
-  hi Comment ctermfg=bg ctermbg=240
-  hi Comment guifg=#585858 guibg=bg
-else
-  set t_Co=8
-  set t_Sf=^[[3%p1%dm
-  set t_Sb=^[[4%p1%dm
-endif
+set t_Co=256
+let base16colorspace=256  " Access colors present in 256 colorspace
+" color fixes
+hi Comment ctermfg=bg ctermbg=240
+hi Comment guifg=#585858 guibg=bg
 
 " GUI options
-if GUI()
-  set guicursor=a:blinkon0 " cursor-blinking off!!
-  set guioptions=ac
-  set guioptions+=p " enable pointer callbacks for X11 (required by some WMs)
-  set guioptions+=h " prevent the cursor jumping to the longest line while scrolling
-  set winaltkeys=no " don't select the menu when pressing the alt-keys
-  " Linux
-  if WINDOWS()
-    set gfn=DejaVu_Sans_Mono_for_Powerline:h10
-  elseif OSX()
-    set gfn=Menlo:h13
-  else
-    set gfn=Consolas\ 11
-  endif
-  nmap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
-endif
+set guicursor=a:blinkon0 " cursor-blinking off!!
+set guioptions=ac
+set guioptions+=p " enable pointer callbacks for X11 (required by some WMs)
+set guioptions+=h " prevent the cursor jumping to the longest line while scrolling
+set winaltkeys=no " don't select the menu when pressing the alt-keys
+" Linux
+set gfn=Consolas\ 11
+nmap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
 " Language Settings
 " Highlight problematic whitespace (spaces before tabs)

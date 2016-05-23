@@ -55,16 +55,9 @@ if count(g:bundle_groups, 'general')
 endif
 " DEVELOPER
 if count(g:bundle_groups, 'devel')
-  if WINDOWS()
-    " NeoComplete
-    Plugin 'Shougo/neocomplete'
-    Plugin 'Shougo/neosnippet'
-    Plugin 'Shougo/neosnippet-snippets'
-  else
-    " YouCompleteMe
-    Plugin 'Valloric/YouCompleteMe'
-    Plugin 'SirVer/ultisnips'
-  endif
+  " YouCompleteMe
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'SirVer/ultisnips'
   Plugin 'honza/vim-snippets'
   Plugin 'mattn/emmet-vim'
   Plugin 'AzizLight/TaskList.vim'
