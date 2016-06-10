@@ -8,7 +8,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 let answer=0
-until [ "$answer" -eq 1 ] || [ "$answer" -eq 2 ] || [ "$answer" -eq 3 ]; do
+until [ "$answer" -eq 1 ] || [ "$answer" -eq 2 ]; do
   echo ""
   echo "What do you want to do?"
   echo "[1] Copy the dotfiles"
