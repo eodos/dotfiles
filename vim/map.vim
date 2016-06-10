@@ -124,3 +124,6 @@ nmap <silent> <leader>ul :t.<CR>Vr-
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
+" python run file
+autocmd Filetype python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
