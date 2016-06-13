@@ -20,12 +20,10 @@ if [ "$answer" -eq 2 ]; then
   exit
 else
   # Backup present files
-  if [[ -f ~/.bashrc || -d ~/.vim || -f ~/.vimrc || -f ~/.zshrc ]]; then
-    if [ -d ~/backup-files ]; then
-      rm -rf ~/backup-files
-    fi
-    mkdir -p ~/backup-files/
+  if [ -d ~/backup-files ]; then
+    rm -rf ~/backup-files
   fi
+  mkdir -p ~/backup-files/
 
   if [ -f ~/.bashrc ]; then
     mv ~/.bashrc ~/backup-files/bashrc
@@ -34,7 +32,7 @@ else
 
   if [ -d ~/.vim ]; then
     mv ~/.vim ~/backup-files/vim
-    echo "Current .vim folder saved in ~/backup-files/"
+    echo "Current .vim folder saved in ~/backup-files/vim/"
   fi
 
   if [ -f ~/.vimrc ]; then
@@ -47,15 +45,43 @@ else
     echo "Current .zshrc file saved in ~/backup-files/"
   fi
 
+  if [ -f ~/.config/i3/config ]; then
+    mv ~/.config/i3/config ~/backup-files/i3-config
+    mv ~/.config/i3blocks/config ~/backup-files/i3blocks-config
+    echo "Current i3 configuration saved in ~/backup-files/"
+  fi
+
+  if [ -d ~/scripts ]; then
+    mv ~/scripts ~/backup-files/scripts
+    echo "Current scripts saved in ~/backup-files/scripts/"
+  fi
+
   # Copy the files
   echo "Copying bashrc file..."
   cp $DIR/bashrc ~/.bashrc
+
   echo "Copying vim folder..."
   cp -r $DIR/vim ~/.vim
+
   echo "Copying vimrc file..."
   cp $DIR/vim/vimrc ~/.vimrc
+
   echo "Copying zshrc file..."
   cp $DIR/zshrc ~/.zshrc
+
+  echo "Copying the i3 configuration files..."
+  if [ ! -d ~/.config/i3 ]; then
+    mkdir ~/.config/i3
+  fi
+  if [ ! -d ~/.config/i3blocks ]; then
+    mkdir ~/.config/i3blocks
+  fi
+  cp $DIR/i3-config ~/.config/i3/config
+  cp $DIR/i3blocks-config ~/.config/i3blocks/config
+
+  echo "Copying the scripts..."
+  mkdir ~/scripts
+  cp $DIR/scripts/* ~/scripts/
 
   echo ""
   echo "Do you want to install the vim plugins now?"
