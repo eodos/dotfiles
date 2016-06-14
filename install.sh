@@ -45,10 +45,19 @@ else
     echo "Current .zshrc file saved in ~/backup-files/"
   fi
 
+  if [ -f ~/.xinitrc ]; then
+    mv ~/.xinitrc ~/backup-files/xinitrc
+    echo "Current .xinitrc file saved in ~/backup-files/"
+  fi
+
   if [ -f ~/.config/i3/config ]; then
     mv ~/.config/i3/config ~/backup-files/i3-config
+    echo "Current i3 configuration file saved in ~/backup-files/"
+  fi
+
+  if [ -f ~/.config/i3blocks/config ]; then
     mv ~/.config/i3blocks/config ~/backup-files/i3blocks-config
-    echo "Current i3 configuration saved in ~/backup-files/"
+    echo "Current i3blocks configuration file saved in ~/backup-files/"
   fi
 
   if [ -d ~/scripts ]; then
@@ -69,7 +78,10 @@ else
   echo "Copying zshrc file..."
   cp $DIR/zshrc ~/.zshrc
 
-  echo "Copying the i3 configuration files..."
+  echo "Coping xinitrc file..."
+  cp $DIR/xinitrc ~/.xinitrc
+
+  echo "Copying the i3 and i3blocks configuration files..."
   if [ ! -d ~/.config/i3 ]; then
     mkdir ~/.config/i3
   fi
