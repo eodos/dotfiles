@@ -632,4 +632,7 @@ fi
 if [ -d "/opt/ros" ]; then
   source /opt/ros/indigo/setup.bash
 fi
+
+# Load VPS ips
+source ~/ip
 # }}}

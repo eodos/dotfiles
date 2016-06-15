@@ -25,49 +25,46 @@ else
   fi
   mkdir -p ~/backup-files/
 
+  echo "Copying dotfiles to ~/backup-files/"
+
   if [ -f ~/.bashrc ]; then
     mv ~/.bashrc ~/backup-files/bashrc
-    echo "Current .bashrc file saved in ~/backup-files/"
   fi
 
   if [ -d ~/.vim ]; then
     mv ~/.vim ~/backup-files/vim
-    echo "Current .vim folder saved in ~/backup-files/vim/"
   fi
 
   if [ -f ~/.vimrc ]; then
     mv ~/.vimrc ~/backup-files/vimrc
-    echo "Current .vimrc file saved in ~/backup-files/"
   fi
 
   if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/backup-files/zshrc
-    echo "Current .zshrc file saved in ~/backup-files/"
   fi
 
   if [ -f ~/.xinitrc ]; then
     mv ~/.xinitrc ~/backup-files/xinitrc
-    echo "Current .xinitrc file saved in ~/backup-files/"
   fi
 
   if [ -f ~/.gitconfig ]; then
     mv ~/.gitconfig ~/backup-files/gitconfig
-    echo "Current .gitconfig file saved in ~/backup-files/"
+  fi
+
+  if [ -f ~/ip ]; then
+    mv ~/ip ~/backup-files/ip
   fi
 
   if [ -f ~/.config/i3/config ]; then
     mv ~/.config/i3/config ~/backup-files/i3-config
-    echo "Current i3 configuration file saved in ~/backup-files/"
   fi
 
   if [ -f ~/.config/i3blocks/config ]; then
     mv ~/.config/i3blocks/config ~/backup-files/i3blocks-config
-    echo "Current i3blocks configuration file saved in ~/backup-files/"
   fi
 
   if [ -d ~/scripts ]; then
     mv ~/scripts ~/backup-files/scripts
-    echo "Current scripts saved in ~/backup-files/scripts/"
   fi
 
   # Copy the files
@@ -88,6 +85,9 @@ else
 
   echo "Copying gitconfig file..."
   cp $DIR/gitconfig ~/.gitconfig
+
+  echo "Copying ips dotfile..."
+  cp $DIR/ip ~/ip
 
   echo "Copying the i3 and i3blocks configuration files..."
   if [ ! -d ~/.config/i3 ]; then
