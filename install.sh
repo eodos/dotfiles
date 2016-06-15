@@ -50,6 +50,11 @@ else
     echo "Current .xinitrc file saved in ~/backup-files/"
   fi
 
+  if [ -f ~/.gitconfig ]; then
+    mv ~/.gitconfig ~/backup-files/gitconfig
+    echo "Current .gitconfig file saved in ~/backup-files/"
+  fi
+
   if [ -f ~/.config/i3/config ]; then
     mv ~/.config/i3/config ~/backup-files/i3-config
     echo "Current i3 configuration file saved in ~/backup-files/"
@@ -80,6 +85,9 @@ else
 
   echo "Coping xinitrc file..."
   cp $DIR/xinitrc ~/.xinitrc
+
+  echo "Copying gitconfig file..."
+  cp $DIR/gitconfig ~/.gitconfig
 
   echo "Copying the i3 and i3blocks configuration files..."
   if [ ! -d ~/.config/i3 ]; then

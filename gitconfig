@@ -1,0 +1,22 @@
+[user]
+	name = David Paul Pena
+	email = eodos@eodos.net
+[github]
+	user = eodos
+[color]
+	ui = true
+	status = auto
+	branch = auto
+	diff = auto
+[diff]
+	color = true
+[core]
+	filemode = true
+	editor = vim
+[push]
+	default = matching
+[format]
+	signoff = true
+[alias]
+	reset = reset --soft HEAD^
+	graph = log --graph --oneline --decorate
