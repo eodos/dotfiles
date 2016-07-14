@@ -188,7 +188,7 @@ bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
 
 # thunar
-bindsym $mod+n exec --no-startup-id thunar
+bindsym $mod+n exec --no-startup-id nautilus
 
 set $mode_brightness brightness
 bindsym $mod+Shift+b mode "$mode_brightness"
