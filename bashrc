@@ -639,4 +639,7 @@ source ~/ip
 # Matlab path for Jupyter Notebook
 MATLAB_EXECUTABLE=/opt/MATLAB/R2015b/bin/
 
+# Torch
+. ~/torch/install/bin/torch-activate
+
 # }}}

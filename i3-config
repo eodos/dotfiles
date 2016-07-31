@@ -35,7 +35,7 @@ set $ws6  "6:  "
 set $ws7  "7:  "
 set $ws8  "8: 8 "
 set $ws9  "9: 9 "
-set $ws10  "10: 10 "
+set $ws10  "10: &#xf108; "
 
 set $default_gaps_inner 0
 set $default_gaps_outer 0
@@ -255,4 +255,5 @@ exec --no-startup-id /home/eodos/scripts/i3exit.sh lock
 exec --no-startup-id rescuetime
 exec --no-startup-id dropbox
 exec --no-startup-id xautolock -time 3 -locker '/home/eodos/scripts/i3exit.sh lock'
-
+exec --no-startup-id nc-indicators
+exec --no-startup-id wpa_gui
