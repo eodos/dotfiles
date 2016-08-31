@@ -251,9 +251,10 @@ bar {
 exec_always --no-startup-id feh --bg-fill $HOME/Dropbox/simple.png
 
 # Autostart
-exec --no-startup-id /home/eodos/scripts/i3exit.sh lock
+exec --no-startup-id lock
 exec --no-startup-id rescuetime
 exec --no-startup-id dropbox
-exec --no-startup-id xautolock -time 3 -locker '/home/eodos/scripts/i3exit.sh lock'
+exec --no-startup-id xautolock -time 3 -locker lock
 exec --no-startup-id nc-indicators
 exec --no-startup-id wpa_gui
+exec --no-startup-id ~/scripts/keyboard.sh
