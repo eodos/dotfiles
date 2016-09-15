@@ -37,16 +37,11 @@ set $ws8  "8: 8 "
 set $ws9  "9: 9 "
 set $ws10  "10: &#xf108; "
 
-set $default_gaps_inner 0
-set $default_gaps_outer 0
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
+new_window 1pixel
 
-workspace $ws1 gaps inner 0
-workspace $ws1 gaps outer 0
-workspace $ws9 gaps inner 0
-workspace $ws9 gaps outer 0
-workspace $ws10 gaps inner 0
+gaps inner 10
+gaps outer 10
+smart_gaps on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
