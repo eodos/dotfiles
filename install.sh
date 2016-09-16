@@ -63,6 +63,10 @@ else
     mv ~/.config/i3blocks/config ~/backup-files/i3blocks-config
   fi
 
+  if [ -f ~/.config/termite/config ]; then
+    mv ~/.config/termite/config ~/backup-files/termite-config
+  fi
+
   if [ -d ~/scripts ]; then
     mv ~/scripts ~/backup-files/scripts
   fi
@@ -98,6 +102,9 @@ else
   fi
   cp $DIR/i3-config ~/.config/i3/config
   cp $DIR/i3blocks-config ~/.config/i3blocks/config
+
+  echo "Linking termite dotfile..."
+  cp $DIR/termite-config ~/.config/termite/config
 
   echo "Copying the scripts..."
   mkdir ~/scripts
