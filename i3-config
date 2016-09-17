@@ -230,8 +230,8 @@ bar {
 	strip_workspace_numbers yes
 	colors {
 		#statusline	$white
-		#background	$transparent
-		#separator	$transparent
+		background	$transparent
+		separator	$transparent
 		
 #					BORDER		BACKGROUND	TEXT
 		#focused_workspace	$transparent	$transparent	$darkwhite
