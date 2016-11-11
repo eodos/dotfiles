@@ -31,12 +31,8 @@ else
     mv ~/.bashrc ~/backup-files/bashrc
   fi
 
-  if [ -d ~/.vim ]; then
-    mv ~/.vim ~/backup-files/vim
-  fi
-
-  if [ -f ~/.vimrc ]; then
-    mv ~/.vimrc ~/backup-files/vimrc
+  if [ -d ~/.config/nvim ]; then
+    mv ~/.config/nvim ~/backup-files/nvim
   fi
 
   if [ -f ~/.zshrc ]; then
@@ -75,11 +71,8 @@ else
   echo "Copying bashrc file..."
   cp $DIR/bashrc ~/.bashrc
 
-  echo "Copying vim folder..."
-  cp -r $DIR/vim ~/.vim
-
-  echo "Copying vimrc file..."
-  cp $DIR/vim/vimrc ~/.vimrc
+  echo "Copying nvim folder..."
+  cp -r $DIR/nvim ~/.config/nvim
 
   echo "Copying zshrc file..."
   cp $DIR/zshrc ~/.zshrc
@@ -118,10 +111,16 @@ else
 
   if [ "$answer" -eq 1 ]; then
     # Install vim plugins
-    vim +PluginInstall +qall
+#    nvim +PluginInstall +qall
 
     # Compile YouCompleteMe
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --clang-completer
+#    cd ~/.config/nvim/bundle/YouCompleteMe
+#    ./install.py --clang-completer
+
+    nvim -c 'call dein#install()'						\
+	 -c "call dein#direct_install('altercation/vim-colors-solarized')"	\ 
+	 -c "call dein#direct_install('mhartington/oceanic-next')"		\
+	 -c q
+
   fi
 fi

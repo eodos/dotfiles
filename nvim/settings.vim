@@ -51,7 +51,7 @@ if has("mouse")
   set mouse=a
   set mousehide
   set mousemodel=popup
-  if has("mouse_sgr")|set ttymouse=sgr|else|set ttymouse=xterm2|endif
+  if has("mouse_sgr")|set ttymouse=sgr|endif
 endif
 
 " Editor Settings
@@ -88,18 +88,19 @@ set showbreak=↪
 
 " Appearance Settings
 " switch syntax highlighting on, when the terminal has colors
-if &t_Co > 2
-  syntax enable
+syntax enable
+if (has("termguicolors"))
+  set termguicolors
 endif
-" default colorscheme
 set background=dark
-"colorscheme solarized
-colorscheme codeschool
-set t_Co=256
-let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme OceanicNext
+" colorscheme solarized
+" colorscheme codeschool
+" set t_Co=256
+" let base16colorspace=256  " Access colors present in 256 colorspace
 " color fixes
-hi Comment ctermfg=bg ctermbg=240
-hi Comment guifg=#585858 guibg=bg
+" hi Comment ctermfg=bg ctermbg=240
+" hi Comment guifg=#585858 guibg=bg
 
 " GUI options
 set guicursor=a:blinkon0 " cursor-blinking off!!

@@ -1,5 +1,6 @@
 [options]
-font = Monospace 8
+font = Monaco 8
+#font = Monospace 8
 #font = Iosevka 10
 browser = google-chrome-stable
 clickable_url = false
