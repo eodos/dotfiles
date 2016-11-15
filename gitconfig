@@ -1,6 +1,6 @@
 [user]
 	name = David Paul Pena
-	email = eodos@eodos.net
+	email = dpaul@nyu.edu
 [github]
 	user = eodos
 [color]
@@ -12,7 +12,7 @@
 	color = true
 [core]
 	filemode = true
-	editor = vim
+	editor = nvim
 [push]
 	default = matching
 [format]

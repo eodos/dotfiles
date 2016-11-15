@@ -629,8 +629,8 @@ if [ -d "$PATH:$HOME/.rvm" ]; then
   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fi
 
-if [ -d "/opt/ros" ]; then
-  source /opt/ros/indigo/setup.bash
+if [ -d "/opt/ros/kinetic" ]; then
+  source /opt/ros/kinetic/setup.bash
 fi
 
 # Load VPS ips
@@ -643,3 +643,11 @@ MATLAB_EXECUTABLE=/opt/MATLAB/R2015b/bin/
 . ~/torch/install/bin/torch-activate
 
 # }}}
+
+if [ -d "~/anaconda3" ]; then
+  export PATH="/home/eodos/anaconda3/bin:$PATH"
+fi
+
+if [ -d "/opt/todoist" ]; then
+  export PATH="/opt/todoist:$PATH"
+fi

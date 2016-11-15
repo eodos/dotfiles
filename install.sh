@@ -104,15 +104,24 @@ else
   cp $DIR/scripts/* ~/scripts/
 
   echo ""
-  echo "Do you want to install the vim plugins now?"
+  echo "Do you want to install dein (nvim plugin manager)?"
   echo "[1] Yes"
   echo "[2] No"
   read answer
 
   if [ "$answer" -eq 1 ]; then
-    # Install vim plugins
-#    nvim +PluginInstall +qall
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/Downloads/dein-installer.sh
+    sh ~/Downloads/dein-installer.sh ~/dein
+  fi
 
+
+  echo ""
+  echo "Do you want to install the nvim plugins now?"
+  echo "[1] Yes"
+  echo "[2] No"
+  read answer
+
+  if [ "$answer" -eq 1 ]; then
     # Compile YouCompleteMe
 #    cd ~/.config/nvim/bundle/YouCompleteMe
 #    ./install.py --clang-completer
