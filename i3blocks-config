@@ -23,7 +23,8 @@ instance=Master
 
 [brightness]
 label=    
-command=printf "%.0f " $(xbacklight -get)
+#command=printf "%.0f " $(xbacklight -get)
+command=printf "%.0f " $(light -s acpi_video0 -G)
 interval=10
 signal=2
 border=#d79921
