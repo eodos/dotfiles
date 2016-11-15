@@ -93,9 +93,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-colorscheme OceanicNext
-" colorscheme solarized
-" colorscheme codeschool
+colorscheme monokai
 " set t_Co=256
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " color fixes

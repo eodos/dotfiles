@@ -1,3 +1,4 @@
+
 #!/bin/bash
 ############################
 # install.sh
@@ -29,6 +30,10 @@ else
 
   if [ -f ~/.bashrc ]; then
     mv ~/.bashrc ~/backup-files/bashrc
+  fi
+
+  if [ -f ~/.profile ]; then
+    mv ~/.profile ~/backup-files/profile
   fi
 
   if [ -d ~/.config/nvim ]; then
@@ -70,6 +75,9 @@ else
   # Copy the files
   echo "Copying bashrc file..."
   cp $DIR/bashrc ~/.bashrc
+
+  echo "Copying profile file..."
+  cp $DIR/profile ~/.profile
 
   echo "Copying nvim folder..."
   cp -r $DIR/nvim ~/.config/nvim
@@ -126,10 +134,9 @@ else
 #    cd ~/.config/nvim/bundle/YouCompleteMe
 #    ./install.py --clang-completer
 
-    nvim -c 'call dein#install()'						\
-	 -c "call dein#direct_install('altercation/vim-colors-solarized')"	\ 
-	 -c "call dein#direct_install('mhartington/oceanic-next')"		\
-	 -c q
-
+    nvim -c "call dein#install()" -c q
+#	  nvim -c "call dein#direct_install('altercation/vim-colors-solarized')" -c q
+#	  nvim -c "call dein#direct_install('mhartington/oceanic-next')" -c q
+	  nvim -c "call dein#direct_install('kien/rainbow_parentheses.vim')" -c q
   fi
 fi
