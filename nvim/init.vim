@@ -17,9 +17,9 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 
-call dein#direct_install('altercation/vim-colors-solarized')
-call dein#direct_install('mhartington/oceanic-next')
-call dein#direct_install('kien/rainbow_parentheses.vim')
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('mhartington/oceanic-next')
+call dein#add('kien/rainbow_parentheses.vim')
 
 
 " You can specify revision/branch/tag.
