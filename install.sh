@@ -135,8 +135,5 @@ else
 #    ./install.py --clang-completer
 
     nvim -c "call dein#install()" -c q
-#	  nvim -c "call dein#direct_install('altercation/vim-colors-solarized')" -c q
-#	  nvim -c "call dein#direct_install('mhartington/oceanic-next')" -c q
-	  nvim -c "call dein#direct_install('kien/rainbow_parentheses.vim')" -c q
   fi
 fi
