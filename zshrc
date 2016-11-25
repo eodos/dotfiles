@@ -1,14 +1,22 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+DEFAULT_USER="eodos"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
@@ -47,35 +55,43 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/workspace/dotfiles/proxy.sh
-source $HOME/workspace/dotfiles/ips.sh
-
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias update="yaourt -Syua"
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/ip
+
+alias update="pacman -Syu"
 
 # Functions
 mkcd() {
@@ -91,3 +107,102 @@ cd() {
 pacman() {
   sudo pacman $@;
 }
+
+compress() {
+  if [[ -n "$1" ]]; then
+    FILE=$1
+    case $FILE in
+      *.tar ) shift && tar cf $FILE $* ;;
+      *.tar.bz2 ) shift && tar cjf $FILE $* ;;
+      *.tar.gz ) shift && tar czf $FILE $* ;;
+      *.tgz ) shift && tar czf $FILE $* ;;
+      *.zip ) shift && zip $FILE $* ;;
+      *.rar ) shift && rar $FILE $* ;;
+    esac
+  else
+    echo "usage: compress <foo.tar.gz> ./foo ./bar"
+  fi
+}
+
+extract() {
+  clrstart="\033[1;34m"  #color codes
+  clrend="\033[0m"
+
+  if [[ "$#" -lt 1 ]]; then
+    echo -e "${clrstart}Pass a filename. Optionally a destination folder. You can also append a v for verbose output.${clrend}"
+    exit 1 #not enough args
+  fi
+
+  if [[ ! -e "$1" ]]; then
+    echo -e "${clrstart}File does not exist!${clrend}"
+    exit 2 #file not found
+  fi
+
+  if [[ -z "$2" ]]; then
+    DESTDIR="." #set destdir to current dir
+  elif [[ ! -d "$2" ]]; then
+    echo -e -n "${clrstart}Destination folder doesn't exist or isnt a directory. Create? (y/n): ${clrend}"
+    read response
+    if [[ $response == y || $response == Y ]]; then
+      mkdir -p "$2"
+      if [ $? -eq 0 ]; then
+        DESTDIR="$2"
+        else
+          exit 6 #Write perms error
+        fi
+      else
+        echo -e "${clrstart}Closing.${clrend}"; exit 3 # n/wrong response
+      fi
+    else
+    DESTDIR="$2"
+  fi
+
+  if [[ ! -z "$3" ]]; then
+    if [[ "$3" != "v" ]]; then
+      echo -e "${clrstart}Wrong argument $3 !${clrend}"
+      exit 4 #wrong arg 3
+    fi
+  fi
+
+  filename=`basename "$1"`
+
+  case "${filename##*.}" in
+    tar)
+      echo -e "${clrstart}Extracting $1 to $DESTDIR: (uncompressed tar)${clrend}"
+      tar x${3}f "$1" -C "$DESTDIR"
+      ;;
+    gz)
+      echo -e "${clrstart}Extracting $1 to $DESTDIR: (gip compressed tar)${clrend}"
+      tar x${3}fz "$1" -C "$DESTDIR"
+      ;;
+    tgz)
+      echo -e "${clrstart}Extracting $1 to $DESTDIR: (gip compressed tar)${clrend}"
+      tar x${3}fz "$1" -C "$DESTDIR"
+      ;;
+    xz)
+      echo -e "${clrstart}Extracting  $1 to $DESTDIR: (gip compressed tar)${clrend}"
+      tar x${3}f -J "$1" -C "$DESTDIR"
+      ;;
+    bz2)
+      echo -e "${clrstart}Extracting $1 to $DESTDIR: (bzip compressed tar)${clrend}"
+      tar x${3}fj "$1" -C "$DESTDIR"
+      ;;
+    zip)
+      echo -e "${clrstart}Extracting $1 to $DESTDIR: (zipp compressed file)${clrend}"
+      unzip "$1" -d "$DESTDIR"
+      ;;
+    rar)
+      echo -e "${clrstart}Extracting $1 to $DESTDIR: (rar compressed file)${clrend}"
+      unrar x "$1" "$DESTDIR"
+      ;;
+    7z)
+      echo -e  "${clrstart}Extracting $1 to $DESTDIR: (7zip compressed file)${clrend}"
+      7za e "$1" -o"$DESTDIR"
+      ;;
+    *)
+      echo -e "${clrstart}Unknown archieve format!"
+      exit 5
+      ;;
+  esac
+}
+
