@@ -6,10 +6,10 @@ set $mod Mod1
 
 font pango:Hack, FontAwesome 8
 
-set_from_resource $darkred	color1	#000000
-set_from_resource $red		color9	#000000
-set_from_resource $darkgreen	color2	#000000
-set_from_resource $green	color10	#000000
+set_from_resource $darkred	    color1	#000000
+set_from_resource $red		      color9	#000000
+set_from_resource $darkgreen	  color2	#000000
+set_from_resource $green	      color10	#000000
 set_from_resource $darkyellow  	color3  #000000
 set_from_resource $yellow      	color11 #000000
 set_from_resource $darkblue    	color4  #000000
@@ -161,7 +161,7 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+d exec --no-startup-id rofi -show run
 
-assign [class="(?i)chrome"]		$ws1
+assign [class="(?i)chrome"]		    $ws1
 assign [class="(?i)thunderbird"]	$ws2
 
 # volume control
@@ -226,13 +226,13 @@ bar {
         status_command i3blocks
 	i3bar_command i3bar -t
 	position top
-	font pango:Hack, FontAwesome 8
-	strip_workspace_numbers yes
+  font pango:Hack, FontAwesome 8
+  strip_workspace_numbers yes
 	colors {
 		#statusline	$white
 		background	$transparent
 		separator	$transparent
-		
+
 #					BORDER		BACKGROUND	TEXT
 		#focused_workspace	$transparent	$transparent	$darkwhite
 		#inactive_workspace	$transparent	$transparent	$white
