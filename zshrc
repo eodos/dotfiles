@@ -93,7 +93,6 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/ip
 
 alias update="pacman -Syu"
 
@@ -210,3 +209,29 @@ extract() {
   esac
 }
 
+export PATH=$PATH:/usr/local/cuda-8.0/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64
+
+if [ -d "/opt/ros/kinetic" ]; then
+  source /opt/ros/kinetic/setup.zsh
+fi
+
+# Load VPS ips
+source $HOME/ip
+
+# Matlab path for Jupyter Notebook
+MATLAB_EXECUTABLE=/opt/MATLAB/R2015b/bin/
+
+# Torch
+if [ -d "$HOME/torch" ]; then
+  . $HOME/torch/install/bin/torch-activate
+fi
+# }}}
+
+if [ -d "$HOME/anaconda3" ]; then
+  export PATH="$HOME/anaconda3/bin:$PATH"
+fi
+
+if [ -d "/opt/todoist" ]; then
+  export PATH="/opt/todoist:$PATH"
+fi
