@@ -1,7 +1,6 @@
 [options]
-font = Monaco 8
-#font = Monospace 8
-#font = Iosevka 10
+#font = Roboto Mono for Powerline 8
+font = Droid Sans Mono Slashed for Powerline 8
 browser = google-chrome-stable
 clickable_url = true
 dynamic_title = true

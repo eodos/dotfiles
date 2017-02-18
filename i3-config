@@ -226,8 +226,8 @@ bar {
         status_command i3blocks
 	i3bar_command i3bar -t
 	position top
-  font pango:Hack, FontAwesome 8
-  strip_workspace_numbers yes
+  	font pango:Hack, FontAwesome 8
+	strip_workspace_numbers yes
 	colors {
 		#statusline	$white
 		background	$transparent
