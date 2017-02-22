@@ -216,6 +216,10 @@ if [ -d "/opt/ros/kinetic" ]; then
   source /opt/ros/kinetic/setup.zsh
 fi
 
+if [ -d "$HOME/catkin_ws" ]; then
+  source $HOME/catkin_ws/devel/setup.zsh
+fi
+
 # Load VPS ips
 source $HOME/ip
 
