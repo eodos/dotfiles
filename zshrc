@@ -235,3 +235,7 @@ fi
 if [ -d "/opt/todoist" ]; then
   export PATH="/opt/todoist:$PATH"
 fi
+
+if [ -d "/opt/V-REP_PRO_EDU_V3_3_0_64_Linux/" ]; then
+  export PATH="/opt/V-REP_PRO_EDU_V3_3_0_64_Linux:$PATH"
+fi
