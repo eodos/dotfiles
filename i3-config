@@ -171,6 +171,9 @@ assign [class="(?i)thunderbird"]	$ws2
 # open MATLAB figures as floating containers
 for_window [title="Figure*"] floating enable
 
+# open Thunderbird compose email window as floating containers
+for_window [title="Write*"] floating enable
+
 # volume control
 bindsym XF86AudioLowerVolume exec --no-startup-id ${HOME}/scripts/volume.sh 5
 bindsym XF86AudioRaiseVolume exec --no-startup-id ${HOME}/scripts/volume.sh 4
