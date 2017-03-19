@@ -24,9 +24,6 @@ call dein#add('kien/rainbow_parentheses.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
 " Required:
 call dein#end()
 
