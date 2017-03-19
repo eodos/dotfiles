@@ -19,6 +19,7 @@ call dein#add('Shougo/neosnippet-snippets')
 
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('mhartington/oceanic-next')
+call dein#add('sickill/vim-monokai')
 
 call dein#add('kien/rainbow_parentheses.vim')
 call dein#add('scrooloose/nerdtree')
