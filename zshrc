@@ -67,17 +67,12 @@ plugins=(git)
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
+# Preferred editor
+export EDITOR="nvim"
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-# ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -95,6 +90,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 alias update="pacman -Syu"
+alias ssh="TERM=xterm ssh"
 
 # Functions
 mkcd() {
@@ -242,4 +238,8 @@ fi
 
 if [ -d "/opt/V-REP_PRO_EDU_V3_3_0_64_Linux/" ]; then
   export PATH="/opt/V-REP_PRO_EDU_V3_3_0_64_Linux:$PATH"
+fi
+
+if [ -f "usr/share/gazebo/setup.sh" ]; then
+  source /usr/share/gazebo/setup.sh
 fi
