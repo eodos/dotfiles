@@ -25,6 +25,9 @@ call dein#add('kien/rainbow_parentheses.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 
+call dein#add('rust-lang/rust.vim')
+call dein#add('vim-syntastic/syntastic')
+
 " Required:
 call dein#end()
 
