@@ -1,6 +1,6 @@
 [user]
 	name = David Paul Pena
-	email = dpaul@nyu.edu
+	email = eodos0@gmail.com
 [github]
 	user = eodos
 [color]
@@ -8,11 +8,24 @@
 	status = auto
 	branch = auto
 	diff = auto
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = 11
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 [diff]
 	color = true
 [core]
 	filemode = true
 	editor = nvim
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
 	default = matching
 [format]
@@ -20,3 +33,4 @@
 [alias]
 	reset = reset --soft HEAD^
 	graph = log --graph --oneline --decorate
+

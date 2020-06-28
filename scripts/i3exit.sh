@@ -2,13 +2,13 @@
 
 case "$1" in
     lock)
-        lock
+        bash $HOME/scripts/lock.sh
         ;;
     logout)
         i3-msg exit
         ;;
     suspend)
-        lock & systemctl suspend
+        bash $HOME/scripts/lock.sh & systemctl suspend
         ;;
     hibernate)
         systemctl hibernate
