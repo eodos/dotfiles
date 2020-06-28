@@ -32,10 +32,6 @@ else
     mv ~/.bashrc ~/backup-files/bashrc
   fi
 
-  if [ -f ~/.profile ]; then
-    mv ~/.profile ~/backup-files/profile
-  fi
-
   if [ -d ~/.config/nvim ]; then
     mv ~/.config/nvim ~/backup-files/nvim
   fi
@@ -75,9 +71,6 @@ else
   # Copy the files
   echo "Copying bashrc file..."
   cp $DIR/bashrc ~/.bashrc
-
-  echo "Copying profile file..."
-  cp $DIR/profile ~/.profile
 
   echo "Copying nvim folder..."
   cp -r $DIR/nvim ~/.config/nvim
